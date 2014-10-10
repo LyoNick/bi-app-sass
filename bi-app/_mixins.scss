@@ -6,6 +6,14 @@
 // licensed under the MIT license 
 // http://www.opensource.org/licenses/mit-license.php
 // ------------------------------------------
+// probably controversial changes by github.com/LyoNick:
+// add prefix to ALL mixin to avoid conflict with compass,
+// change the mixin prefix from bi-app to bidi (more readable - as in bidi-margin)
+// left the global variables prefix as bi-app.
+// this way it is easy to distinct variables from mixins.
+// TODO:
+// maybe change variable prefix too ???
+// this is a test branch. delete this comment when making PR
 
 // ------------------------------------------
 // Table of contents
@@ -28,7 +36,7 @@
 // generic mixin for properties with values
 // (top right bottom left)
 // ------------------------------------------
-@mixin bi-app-compact($property, $top, $right, $bottom, $left) {
+@mixin bidi-compact($property, $top, $right, $bottom, $left) {
   @if $bi-app-direction == ltr {
     #{$property}: $top $right $bottom $left;
   } @else {
@@ -38,47 +46,47 @@
 
 // padding
 // ------------------------------------------
-@mixin padding-left($distance) {
+@mixin bidi-padding-left($distance) {
   padding-#{$bi-app-left}: $distance;
 }
 
-@mixin padding-right($distance) {
+@mixin bidi-padding-right($distance) {
   padding-#{$bi-app-right}: $distance;
 }
 
-@mixin padding($top, $right, $bottom, $left) {
-  @include bi-app-compact(padding, $top, $right, $bottom, $left);
+@mixin bidi-padding($top, $right, $bottom, $left) {
+  @include bidi-compact(padding, $top, $right, $bottom, $left);
 }
 
 // margin
 // ------------------------------------------
-@mixin margin-left($distance) {
+@mixin bidi-margin-left($distance) {
   margin-#{$bi-app-left}: $distance;
 }
 
-@mixin margin-right($distance) {
+@mixin bidi-margin-right($distance) {
   margin-#{$bi-app-right}: $distance;
 }
 
-@mixin margin($top, $right, $bottom, $left) {
+@mixin bidi-margin($top, $right, $bottom, $left) {
   @include bi-app-compact(margin, $top, $right, $bottom, $left);
 }
 
 // float
 // ------------------------------------------
-@mixin bi-app-float-left {
+@mixin bidi-float-left {
   @include float($bi-app-left);
 }
 
-@mixin bi-app-float-right {
+@mixin bidi-float-right {
   @include float($bi-app-right);
 }
 
-@mixin bi-app-float($direction) {
+@mixin bidi-float($direction) {
   @if $direction == left {
-    @include bi-app-float-left;
+    @include bidi-float-left;
   } @else if $direction == right {
-    @include bi-app-float-right;
+    @include bidi-float-right;
   } @else {
     @include float($direction);
   }
@@ -86,19 +94,19 @@
 
 // text align
 // ------------------------------------------
-@mixin bi-app-text-align-left {
+@mixin bidi-text-align-left {
   text-align: $bi-app-left;
 }
 
-@mixin bi-app-text-align-right {
+@mixin bidi-text-align-right {
   text-align: $bi-app-right;
 }
 
-@mixin text-align($direction) {
+@mixin bidi-text-align($direction) {
   @if $direction == left {
-    @include bi-app-text-align-left;
+    @include bidi-text-align-left;
   } @else if $direction == right {
-    @include bi-app-text-align-right;
+    @include bidi-text-align-right;
   } @else {
     text-align: $direction;
   }
@@ -106,19 +114,19 @@
 
 // clear
 // ------------------------------------------
-@mixin bi-app-clear-left {
+@mixin bidi-clear-left {
   clear: $bi-app-left;
 }
 
-@mixin bi-app-clear-right {
+@mixin bidi-clear-right {
   clear: $bi-app-right;
 }
 
-@mixin clear($direction) {
+@mixin bidi-clear($direction) {
   @if $direction == left {
-    @include bi-app-clear-left;
+    @include bidi-clear-left;
   } @else if $direction == right {
-    @include bi-app-clear-right;
+    @include bidi-clear-right;
   } @else {
     clear: $direction;
   }
@@ -126,7 +134,7 @@
 
 // left / right
 // ------------------------------------------
-@mixin left($distance) {
+@mixin bidi-left($distance) {
   @if $bi-app-direction == ltr {
     left: $distance;
   } @else if $bi-app-direction == rtl {
@@ -134,7 +142,7 @@
   }
 }
 
-@mixin right($distance) {
+@mixin bidi-right($distance) {
   @if $bi-app-direction == ltr {
     right: $distance;
   } @else if $bi-app-direction == rtl {
@@ -146,104 +154,104 @@
 // ------------------------------------------
 
 // width
-@mixin border-left-width($width) {
+@mixin bidi-border-left-width($width) {
   border-#{$bi-app-left}-width: $width;
 }
 
-@mixin border-right-width($width) {
+@mixin bidi-border-right-width($width) {
   border-#{$bi-app-right}-width: $width;
 }
 
-@mixin border-width($top, $right, $bottom, $left) {
-  @include bi-app-compact(border-width, $top, $right, $bottom, $left);
+@mixin bidi-border-width($top, $right, $bottom, $left) {
+  @include bidi-compact(border-width, $top, $right, $bottom, $left);
 }
 
 // style
-@mixin border-left-style($style) {
+@mixin bidi-border-left-style($style) {
   border-#{$bi-app-left}-style: $style;
 }
 
-@mixin border-right-style($style) {
+@mixin bidi-border-right-style($style) {
   border-#{$bi-app-right}-style: $style;
 }
 
-@mixin border-style($top, $right, $bottom, $left) {
-  @include bi-app-compact(border-style, $top, $right, $bottom, $left);
+@mixin bidi-border-style($top, $right, $bottom, $left) {
+  @include bidi-compact(border-style, $top, $right, $bottom, $left);
 }
 
 // color
-@mixin border-left-color($color) {
+@mixin bidi-border-left-color($color) {
   border-#{$bi-app-left}-color: $color;
 }
 
-@mixin border-right-color($color) {
+@mixin bidi-border-right-color($color) {
   border-#{$bi-app-right}-color: $color;
 }
 
 @mixin border-color($top, $right, $bottom, $left) {
-  @include bi-app-compact(border-color, $top, $right, $bottom, $left);
+  @include bidi-compact(border-color, $top, $right, $bottom, $left);
 }
 
 // generic
-@mixin border-left($border-style) {
+@mixin bidi-border-left($border-style) {
   border-#{$bi-app-left}: $border-style;
 }
 
-@mixin border-right($border-style) {
+@mixin bidi-border-right($border-style) {
   border-#{$bi-app-right}: $border-style;
 }
 
 // radius
-@mixin bi-app-border-top-left-radius($radius) {
+@mixin bidi-border-top-left-radius($radius) {
   -webkit-border-top-#{$bi-app-left}-radius: $radius;
      -moz-border-top#{$bi-app-left}-radius: $radius;
           border-top-#{$bi-app-left}-radius: $radius;
 }
 
-@mixin bi-app-border-top-right-radius($radius) {
+@mixin bidi-border-top-right-radius($radius) {
   -webkit-border-top-#{$bi-app-right}-radius: $radius;
      -moz-border-top#{$bi-app-right}-radius: $radius;
           border-top-#{$bi-app-right}-radius: $radius;
 }
 
-@mixin bi-app-border-bottom-left-radius($radius) {
+@mixin bidi-border-bottom-left-radius($radius) {
   -webkit-border-bottom-#{$bi-app-left}-radius: $radius;
      -moz-border-bottom#{$bi-app-left}-radius: $radius;
           border-bottom-#{$bi-app-left}-radius: $radius;
 }
 
-@mixin bi-app-border-bottom-right-radius($radius) {
+@mixin bidi-border-bottom-right-radius($radius) {
   -webkit-border-bottom-#{$bi-app-right}-radius: $radius;
      -moz-border-bottom#{$bi-app-right}-radius: $radius;
           border-bottom-#{$bi-app-right}-radius: $radius;
 }
 
-@mixin bi-app-border-right-radius($radius) {
-  @include bi-app-border-top-right-radius($radius);
-  @include bi-app-border-bottom-right-radius($radius);
+@mixin bidi-border-right-radius($radius) {
+  @include bidi-border-top-right-radius($radius);
+  @include bidi-border-bottom-right-radius($radius);
 }
 
-@mixin bi-app-border-left-radius($radius) {
-  @include bi-app-border-top-left-radius($radius);
-  @include bi-app-border-bottom-left-radius($radius);
+@mixin bidi-border-left-radius($radius) {
+  @include bidi-border-top-left-radius($radius);
+  @include bidi-border-bottom-left-radius($radius);
 }
 
-@mixin bi-app-border-top-radius($radius) {
-  @include bi-app-border-top-left-radius($radius);
-  @include bi-app-border-top-right-radius($radius);
+@mixin bidi-border-top-radius($radius) {
+  @include bidi-border-top-left-radius($radius);
+  @include bidi-border-top-right-radius($radius);
 }
 
-@mixin bi-app-border-bottom-radius($radius) {
-  @include bi-app-border-bottom-left-radius($radius);
-  @include bi-app-border-bottom-right-radius($radius);
+@mixin bidi-border-bottom-radius($radius) {
+  @include bidi-border-bottom-left-radius($radius);
+  @include bidi-border-bottom-right-radius($radius);
 }
 
-@mixin bi-app-border-radius($topLeft, $topRight: null, $bottomRight: null, $bottomLeft: null) {
+@mixin bidi-border-radius($topLeft, $topRight: null, $bottomRight: null, $bottomLeft: null) {
   @if $topRight != null {
-    @include bi-app-border-top-left-radius($topLeft);
-    @include bi-app-border-top-right-radius($topRight);
-    @include bi-app-border-bottom-right-radius($bottomRight);
-    @include bi-app-border-bottom-left-radius($bottomLeft);
+    @include bidi-border-top-left-radius($topLeft);
+    @include bidi-border-top-right-radius($topRight);
+    @include bidi-border-bottom-right-radius($bottomRight);
+    @include bidi-border-bottom-left-radius($bottomLeft);
   } @else {
     -webkit-border-radius: $topLeft;
        -moz-border-radius: $topLeft;
@@ -265,13 +273,13 @@
 
 // Support for "direction" declaration (renders ltr/rtl).
 // Useful for form elements as they swap the text-indent property and align the text accordingly.
-@mixin direction {
+@mixin bidi-direction {
   direction: $bi-app-direction;
 }
 
 // Inverts a percentage value. Example: 97% becames 3%.
 // Useful for background-position.
-@function bi-app-invert-percentage($percentage) {
+@function bidi-invert-percentage($percentage) {
   @if $bi-app-direction == rtl {
     @return 100% - $percentage;
   } @else {
