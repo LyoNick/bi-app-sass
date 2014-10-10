@@ -67,20 +67,20 @@
 // float
 // ------------------------------------------
 @mixin bi-app-float-left {
-  float: $bi-app-left;
+  @include float($bi-app-left);
 }
 
 @mixin bi-app-float-right {
-  float: $bi-app-right;
+  @include float($bi-app-right);
 }
 
-@mixin float($direction) {
+@mixin bi-app-float($direction) {
   @if $direction == left {
     @include bi-app-float-left;
   } @else if $direction == right {
     @include bi-app-float-right;
   } @else {
-    float: $direction;
+    @include float($direction);
   }
 }
 
